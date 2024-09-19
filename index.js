@@ -1,3 +1,4 @@
+// Adicionar o evento de submit ao formulário
 document.getElementById('formulario').addEventListener('submit', function(event) {
     event.preventDefault(); // Previne o envio padrão do formulário
     if (validarFormulario()) {
@@ -70,13 +71,23 @@ function exibirDados() {
     celulaDataNascimento.textContent = dataNascimento;
 
     const celulaAcoes = document.createElement('td');
+    
+    // Botão Editar
     const botaoEditar = document.createElement('button');
     botaoEditar.textContent = 'Editar';
     botaoEditar.addEventListener('click', function() {
         editarDados(nome, dataNascimento);
     });
 
+    // Botão Remover
+    const botaoRemover = document.createElement('button');
+    botaoRemover.textContent = 'Remover';
+    botaoRemover.addEventListener('click', function() {
+        removerDados();
+    });
+
     celulaAcoes.appendChild(botaoEditar);
+    celulaAcoes.appendChild(botaoRemover);
 
     novaLinha.appendChild(celulaNome);
     novaLinha.appendChild(celulaDataNascimento);
@@ -90,6 +101,17 @@ function editarDados(nome, dataNascimento) {
     // Carregar os dados no formulário para edição
     document.getElementById('nome').value = nome;
     document.getElementById('dataNascimento').value = dataNascimento;
+}
+
+function removerDados() {
+    // Remover os dados do localStorage
+    localStorage.removeItem('nome');
+    localStorage.removeItem('dataNascimento');
+
+    // Limpar a tabela
+    document.getElementById('tabelaCorpo').innerHTML = '';
+
+    console.log("Dados removidos com sucesso!");
 }
 
 // Exibir os dados ao carregar a página, caso existam
