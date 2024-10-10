@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de Formulário</title>
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <main>
+        <h1>Formulário de Cadastro</h1>
+        <form id="formulario" aria-labelledby="formularioTitulo">
+            <fieldset>
+                <legend id="formularioTitulo">Dados Pessoais</legend>
+
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required aria-required="true" aria-describedby="nomeHelp"><br><br>
+                <span id="nomeHelp" class="visually-hidden">O nome deve conter entre 3 e 120 caracteres.</span>
+
+                <label for="dataNascimento">Data de Nascimento:</label>
+                <input type="date" id="dataNascimento" name="dataNascimento" required aria-required="true" aria-describedby="dataHelp"><br><br>
+                <span id="dataHelp" class="visually-hidden">A data de nascimento deve estar no formato correto.</span>
+
+                <input type="submit" value="Enviar" aria-label="Enviar formulário">
+            </fieldset>
+        </form>
+
+        <section aria-labelledby="dadosSubmetidosTitulo">
+            <h2 id="dadosSubmetidosTitulo">Informações Submetidas</h2>
+            <table id="tabelaDados" border="1" aria-describedby="tabelaDescricao">
+                <caption id="tabelaDescricao" class="visually-hidden">Tabela com os dados submetidos e ações para editar ou remover.</caption>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Data de Nascimento</th>
+                        <th>Ações</th> <!-- Coluna para os botões de edição e remoção -->
+                    </tr>
+                </thead>
+                <tbody id="tabelaCorpo">
+                    <!-- Dados preenchidos aparecerão aqui -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
